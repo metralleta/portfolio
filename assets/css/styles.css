@@ -1,7 +1,267 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: aquamarine;
-  color: hsl(0, 0%, 100%);
+/* Black */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+/* Black Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+/* Extra Bold */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+/* Extra Bold Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+/* Bold */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+/* Bold Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+/* Semi Bold */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+/* Semi Bold Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+/* Medium */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+/* Medium Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+/* Regular */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+/* Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/fonts/Rubik-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+/* Light */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+/* Light Italic */
+@font-face {
+  font-family: "Rubik";
+  src: url("../fonts/Rubik-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 
-/*# sourceMappingURL=styles.css.map */
+:root {
+  --text-color: #fff;
+  --color: #f52cf9;
+  --bg-color: #1c1c1d;
+  --first: #fff;
+  --second: #000;
+  --mob-color: #363636;
+}
+
+body.dark-mode {
+  --text-color: #222;
+  --bg-color: #f2f2f2;
+  --first: #222;
+  --second: #fff;
+  --mob-color: #eae6e6;
+}
+
+.container {
+  max-width: 1250px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header start */
+header {
+  background: var(--bg-color);
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header nav .logo {
+  z-index: 1;
+}
+header nav .logo a {
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--first);
+}
+header nav .logo a span {
+  color: var(--color);
+}
+header nav .list-darkmode-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+header nav .list-darkmode-menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  font-size: 18px;
+  list-style: none;
+  z-index: 1;
+}
+header nav .list-darkmode-menu ul li a {
+  text-decoration: none;
+  position: relative;
+  color: var(--first);
+  font-size: 18px;
+  font-weight: 400;
+  transition: 0.3s ease;
+}
+header nav .list-darkmode-menu ul li a:hover {
+  color: var(--color);
+}
+header nav .list-darkmode-menu ul li a:hover::before {
+  width: 100%;
+}
+header nav .list-darkmode-menu ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 2.5px;
+  background: var(--color);
+  transition: 0.3s ease;
+}
+header nav .list-darkmode-menu .mode {
+  color: var(--text-color);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+header nav .list-darkmode-menu .mode .moon,
+header nav .list-darkmode-menu .mode .sun {
+  position: absolute;
+  animation: animate 0.5s;
+  width: 24px;
+  height: 24px;
+}
+header nav .list-darkmode-menu .mode .sun {
+  display: none;
+}
+header nav .list-darkmode-menu .mode input:checked ~ .moon {
+  display: none;
+}
+header nav .list-darkmode-menu .mode input:checked ~ .sun {
+  display: block;
+}
+header nav .list-darkmode-menu .mode input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+  75% {
+    transform: rotate(25deg);
+  }
+}
+header nav .list-darkmode-menu .hamburger {
+  position: relative;
+  width: 30px;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  scale: 0.9;
+  display: none;
+}
+header nav .list-darkmode-menu .hamburger .bar, header nav .list-darkmode-menu .hamburger::after, header nav .list-darkmode-menu .hamburger::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--first);
+  margin: 6px 0;
+  transition: 0.4s;
+}
+header nav .list-darkmode-menu .hamburger.active::before {
+  transform: rotate(-45deg) translate(-8px, 5px);
+}
+header nav .list-darkmode-menu .hamburger.active::after {
+  transform: rotate(45deg) translate(-8px, -5px);
+}
+header nav .list-darkmode-menu .hamburger.active .bar {
+  opacity: 0;
+}
+
+/* Header end */
+/* Home start *//*# sourceMappingURL=styles.css.map */

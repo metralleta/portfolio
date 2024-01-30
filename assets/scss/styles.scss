@@ -1,5 +1,194 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: aquamarine;
-    color: hsl(0, 0%, 100%);
+@use 'fonts';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
 }
+
+:root {
+    --text-color: #fff;
+    --color: #f52cf9;
+    --bg-color: #1c1c1d;
+    --first: #fff;
+    --second: #000;
+    --mob-color: #363636;
+}
+
+body.dark-mode {
+    --text-color: #222;
+    --bg-color: #f2f2f2;
+    --first: #222;
+    --second: #fff;
+    --mob-color: #eae6e6;
+}
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Header start */
+header {
+    background: var(--bg-color);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            z-index: 1;
+
+            a {
+                text-decoration: none;
+                font-size: 32px;
+                font-weight: 500;
+                color: var(--first);
+
+                span {
+                    color: var(--color);
+                }
+            }
+        }
+
+        .list-darkmode-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+
+            ul {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 35px;
+                font-size: 18px;
+                list-style: none;
+                z-index: 1;
+
+                li {
+                    a {
+                        text-decoration: none;
+                        position: relative;
+                        color: var(--first);
+                        font-size: 18px;
+                        font-weight: 400;
+                        transition: 0.3s ease;
+
+                        &:hover {
+                            color: var(--color);
+
+                            &::before {
+                                width: 100%;
+                            }
+                        }
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            bottom: -7px;
+                            left: 0;
+                            width: 0;
+                            height: 2.5px;
+                            background: var(--color);
+                            transition: 0.3s ease;
+                        }
+                    }
+                }
+            }
+
+            .mode {
+                color: var(--text-color);
+                font-size: 24px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                user-select: none;
+
+                .moon,
+                .sun {
+                    position: absolute;
+                    animation: animate 0.5s;
+                    width: 24px;
+                    height: 24px;
+                }
+
+                .sun {
+                    display: none;
+                }
+
+                input:checked ~ .moon {
+                    display: none;
+                }
+
+                input:checked ~ .sun {
+                    display: block;
+                }
+
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                }
+            }
+
+            @keyframes animate {
+                0% {
+                    transform: rotate(-360deg) scale(0);
+                    opacity: 0;
+                }
+                75% {
+                    transform: rotate(25deg);
+                }
+            }
+
+            .hamburger {
+                position: relative;
+                width: 30px;
+                cursor: pointer;
+                appearance: none;
+                border: none;
+                outline: none;
+                background: none;
+                scale: 0.9;
+                display: none;
+
+                .bar,
+                &::after,
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 3px;
+                    background: var(--first);
+                    margin: 6px 0;
+                    transition: 0.4s;
+                }
+
+                &.active::before {
+                    transform: rotate(-45deg) translate(-8px, 5px);
+                }
+
+                &.active::after {
+                    transform: rotate(45deg) translate(-8px, -5px);
+                }
+
+                &.active .bar {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
+/* Header end */
+
+/* Home start */
